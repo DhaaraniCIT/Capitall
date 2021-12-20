@@ -14,6 +14,8 @@ export class HomePageComponent implements OnInit {
   len: any;
   failure=false;
   loading=true;
+  logged=false;
+  name: any;
   constructor(private router: Router,private service:CapitallSerService) { }
 
   @HostListener('window:scroll', ['$event'])
@@ -27,6 +29,10 @@ onWindowScroll(e) {
     }
   }
   ngOnInit(): void {
+    if(localStorage.getItem('userId')){
+      this.logged=true
+      this.name = localStorage.getItem('userName')
+    }
     this.getProduct()
   }
 
@@ -60,4 +66,15 @@ onWindowScroll(e) {
       }
     )
   }
+
+  gotoDashboard(){
+    this.router.navigate(['/'+this.name+'/Dashboard'])
+  }
+
+  logout(){
+    window.sessionStorage.clear();
+    localStorage.clear();
+    window.location.assign('/');
+  }
+  
 }
