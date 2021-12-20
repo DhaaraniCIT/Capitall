@@ -13,7 +13,16 @@
                     <span class="material-icons text-white mobile" data-toggle="collapse" data-target="#myNavbar">
                         dehaze
                     </span>
-                    <ul class="nav navbar-nav" id="desktop">
+                    <ul *ngIf="logged" class="nav navbar-nav" id="desktop">
+                        <li class="nav-item d-flex justify-content-between">
+                            <img class="rounded-circle" src="../../../assets/3.PNG" alt="user" height="40">
+                            <a class="nav-link" style="font-size: 18px;" (click)="gotoDashboard()">{{name}}</a>
+                        </li>
+                        <li class="nav-item">
+                            <button type="button" class="btn btn-primary" (click)="logout()">Sign out</button>
+                        </li>
+                    </ul>
+                    <ul *ngIf="!logged" class="nav navbar-nav" id="desktop">
                         <li class="nav-item">
                             <a class="nav-link" href="#home">Home</a>
                         </li>
@@ -30,16 +39,13 @@
                             <a class="nav-link" href="#blog">Blog</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#"> </a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link v-line" href="#"> </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" [routerLink]='["/sign-in"]'>Log In</a>
                         </li>
                         <li class="nav-item">
-                            <button type="button" class="btn btn-primary" ><a [routerLink]='["/sign-up"]'>Register</a></button>
+                            <button type="button" class="btn reg btn-primary" ><a [routerLink]='["/sign-up"]'>Register</a></button>
                         </li>
                     </ul>
                 </div>
