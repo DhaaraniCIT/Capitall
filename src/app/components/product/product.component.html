@@ -1,0 +1,81 @@
+<div *ngIf='loading'>
+    <div class="load">
+        <div class="spinner-border text-info"></div>
+        <p>Loading Please wait...</p>
+    </div>
+</div>
+<div *ngIf="!loading">
+    <div class="productpage">
+        <div class="header">
+            <app-header></app-header>
+        </div>
+        <!-- <div class="d-flex justify-content-end back">
+            <button type="button" class="btn btn-dark" (click)="back()">Back</button>
+        </div> -->
+        <div class="product container">
+            <div *ngIf='!ispro'>
+                <div class="text-center">
+                    <h2>Something went wrong, reload the page</h2>
+                </div>
+            </div>
+            <div *ngIf='ispro'>
+                <div class="img ">
+                    <img class="mx-auto d-block img-fluid" src="{{product.Propic}}" alt="" srcset="">
+                </div>
+                <div class="row ml-0 mr-0 mt-5">
+                    <div class="col-sm-7">
+                        <div class="shadow p-4 mb-4 bg-white">
+                            <h1>{{product.Pname}}</h1>
+                            <p>{{product.Pcategory}}</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-5">
+                        <div class="shadow p-4 mb-4 bg-white">
+                            <h1>${{product.Pprice}}</h1>
+                            <button type="button" class="btn btn-primary btn-block" (click)="purchase()">Make offer</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row ml-0 mr-0 mt-2">
+                    <div class="col-sm-7">
+                        <div class="shadow p-4 mb-4 bg-white">
+                            <h2>Description</h2>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-5">
+                        <div class="shadow p-4 mb-4 bg-white">
+                            <div class="d-flex align-items-center">
+                                <div class="mr-3">
+                                    <img class="rounded-circle" src="../../../assets/3.PNG" alt="user" height="100" >
+                                </div>
+                                <div>
+                                    <span><b>Owner</b></span>
+                                    <h2 class="mb-1">{{product.user.name}}</h2>
+                                    <p class="mb-0">{{product.user.email}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="success">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div>
+                            <img class="mx-auto d-block img-fluid" src="../../../assets/select.png" alt="" srcset="">
+                        </div>
+                        <div class="text-center">
+                            <h3>You purchased this Item</h3>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="back()">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

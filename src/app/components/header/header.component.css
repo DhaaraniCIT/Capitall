@@ -1,0 +1,5 @@
+ul li a,ul li a:hover{
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+}

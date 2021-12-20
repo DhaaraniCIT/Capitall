@@ -1,0 +1,47 @@
+<div *ngIf='loading'>
+    <div class="load">
+        <div class="spinner-border text-info"></div>
+        <p>Loading Please wait...</p>
+    </div>
+</div>
+<div *ngIf="!loading">
+    <div class="productspage">
+        <div class="header">
+            <app-header></app-header>
+        </div>
+        <div class="products container">
+            <div>
+                <h1>Products</h1>
+            </div><br>
+            <div *ngIf="len == 0 && !failure ">
+                <h1>No Product available</h1>
+            </div>
+            <div *ngIf="failure ">
+                <h1>{{message}}</h1>
+            </div>
+            <div *ngIf="len != 0 && !failure ">
+                <div class="card-columns d-2">
+                    <div *ngFor="let product of products; let i = index;">
+                        <div class="card">
+                            <img class="card-img-top" src="{{product.Propic}}" height="250" alt="Card image" style="width:100%">
+                            <div class="card-body">
+                                <span class="badge badge-light bat badge-pill"><span>{{product.Pcategory}}</span></span><span class="badge badge-light bm badge-pill float-right"><span class="material-icons text-center heart bg-blue">
+                                    favorite
+                                    </span></span>
+                                <h4 class="card-title pl-2">{{product.Pname}}</h4>
+                                <p class="card-text pl-2">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+                                <div class="pl-2">
+                                    <span><b>Price:</b>&nbsp;$</span>
+                                    <span>{{product.Pprice}}</span>
+                                </div>
+                                <div class="d-flex justify-content-end">
+                                    <button type="button" class="btn btn-primary" (click)="buy(i)">Buy</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
